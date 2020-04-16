@@ -19,6 +19,14 @@ list_term_list_params = RequestParser(bundle_errors=True)
 list_term_list_params.add_argument(
     'year', default=5, required=False, location='args', type=int)
 
+search_list_params = RequestParser(bundle_errors=True)
+search_list_params.add_argument(
+    'input', default='Đại số', required=False, location='args', type=str)
+search_list_params.add_argument(
+    'term', default=76, required=False, location='args', type=int)
+search_list_params.add_argument(
+    'type_education', default=0, required=False, location='args', type=int)
+
 
 class ScoreGetSchema(mm.Schema):
     term = mm.fields.Integer(min=1, required=True)

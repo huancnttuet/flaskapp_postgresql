@@ -79,3 +79,14 @@ def get_list_term(year):
     payload = {'_token': data['_token'], 'year': year}
     r = requests.post(url, headers=headers, data=payload)
     return r.json()
+
+
+def search(text, term, type_education):
+    data = login()
+    url = 'http://112.137.129.30/viewgrade/home/getSearchWithTerm'
+
+    headers = {'Cookie': data['cookie']}
+    payload = {'_token': data['_token'], 'idterm': term,
+               'input': text, 'type_education': type_education}
+    r = requests.post(url, headers=headers, data=payload)
+    return r.json()

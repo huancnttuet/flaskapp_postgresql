@@ -44,6 +44,18 @@ class GetListTermSimple(Resource):
         args = requests.list_term_list_params.parse_args()
         year = args.year
         results = uet_api.get_list_term(year)
+        return {"count": len(results), "list_term": results}
+
+
+@score_ns.route('/search')
+class SearchSimple(Resource):
+    @score_ns.expect(requests.search_list_params, validate=True)
+    def get(self):
+        args = requests.search_list_params.parse_args()
+        text = args.input
+        term = args.term
+        type_education = args.type_education
+        results = uet_api.search(text, term, type_education)
         return {"count": len(results), "list_score": results}
     # @api.expect(score)
     # def post(self):
