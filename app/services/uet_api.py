@@ -90,3 +90,25 @@ def search(text, term, type_education):
                'input': text, 'type_education': type_education}
     r = requests.post(url, headers=headers, data=payload)
     return r.json()
+
+
+def get_hint_input(text):
+    data = login()
+    url = 'http://112.137.129.30/viewgrade/home/getHintInput'
+
+    headers = {'Cookie': data['cookie']}
+    payload = {'_token': data['_token'], 'idterm': -1,
+               'input': text}
+    r = requests.post(url, headers=headers, data=payload)
+    return r.json()
+
+
+def quick_search(text):
+    data = login()
+    url = 'http://112.137.129.30/viewgrade/home/getResultSearch'
+
+    headers = {'Cookie': data['cookie']}
+    payload = {'_token': data['_token'],
+               'input': text}
+    r = requests.post(url, headers=headers, data=payload)
+    return r.json()

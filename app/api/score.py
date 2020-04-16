@@ -57,6 +57,26 @@ class SearchSimple(Resource):
         type_education = args.type_education
         results = uet_api.search(text, term, type_education)
         return {"count": len(results), "list_score": results}
+
+
+@score_ns.route('/quickSearch')
+class SearchSimple(Resource):
+    @score_ns.expect(requests.input_search_list_params, validate=True)
+    def get(self):
+        args = requests.input_search_list_params.parse_args()
+        text = args.input
+        results = uet_api.quick_search(text)
+        return {"count": len(results), "list_score": results}
+
+
+@score_ns.route('/getHintInput')
+class SearchSimple(Resource):
+    @score_ns.expect(requests.input_search_list_params, validate=True)
+    def get(self):
+        args = requests.input_search_list_params.parse_args()
+        text = args.input
+        results = uet_api.get_hint_input(text)
+        return {"count": len(results), "list_hint": results}
     # @api.expect(score)
     # def post(self):
 

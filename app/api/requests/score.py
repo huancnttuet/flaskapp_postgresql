@@ -28,6 +28,11 @@ search_list_params.add_argument(
     'type_education', default=0, required=False, location='args', type=int)
 
 
+input_search_list_params = RequestParser(bundle_errors=True)
+input_search_list_params.add_argument(
+    'input', default='To', required=False, location='args', type=str)
+
+
 class ScoreGetSchema(mm.Schema):
     term = mm.fields.Integer(min=1, required=True)
     type_education = mm.fields.Integer(min=0, required=True)
