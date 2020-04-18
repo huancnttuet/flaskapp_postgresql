@@ -24,24 +24,19 @@ class SubjectSimple(Resource):
     def post(self):
         args = requests.term_id_list_params.parse_args()
         term_id = args.termId
+        page = args.page
         pwd = args.pwd
         if pwd != "ok":
             return "Sai pass"
-        page = 1
         num = 0
-        while True:
-            results = uet_qldt_api.get_list_of_term(term_id, 5000, page)
-            num += len(results)
-            if len(results) != 5000:
-                for r in results:
-                    new_subject = m.SubjectModel(r)
-                    db.session.add(new_subject)
-                db.session.commit()
-                return {"message": f" {num} rows has been created successfully."}
-            for r in results:
-                new_subject = m.SubjectModel(r)
-                db.session.add(new_subject)
-            page += 1
+        results = uet_qldt_api.get_list_of_term(term_id, 5000, page)
+        num += len(results)
+
+        for r in results:
+            new_subject = m.SubjectModel(r)
+            db.session.add(new_subject)
+        db.session.commit()
+        return {"message": f" {num} rows has been created successfully."}
 
     @subject_ns.expect(requests.delete_pass_list_params, validate=True)
     def delete(self):

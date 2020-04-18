@@ -19,6 +19,9 @@ term_id_list_params.add_argument(
     "termId", default="028", required=False, location="args", type=str
 )
 term_id_list_params.add_argument(
+    "page", default="", required=False, location="args", type=str
+)
+term_id_list_params.add_argument(
     "pwd", default="", required=False, location="args", type=str
 )
 delete_pass_list_params = RequestParser(bundle_errors=True)
