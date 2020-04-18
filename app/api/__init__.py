@@ -32,6 +32,7 @@ def init_app(app, **kwargs):
     from .subject import subject_ns
     from .subject_time import subject_time_ns
     from .exam_time import exam_time_ns
+    from .schedule import schedule_ns
 
     app.register_blueprint(api_bp)
     # api.add_namespace(car_ns)
@@ -39,3 +40,4 @@ def init_app(app, **kwargs):
     api.add_namespace(subject_ns)
     api.add_namespace(subject_time_ns)
     api.add_namespace(exam_time_ns)
+    api.add_namespace(schedule_ns)

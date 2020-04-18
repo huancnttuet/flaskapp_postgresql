@@ -16,4 +16,4 @@ class ExamTimeSimple(Resource):
         args = requests.exam_time_list_params.parse_args()
         mssv = args.mssv
         results = uet_qldt_api.get_exam_time(mssv)
-        return {"count": len(results), "list_exam": results}
+        return results

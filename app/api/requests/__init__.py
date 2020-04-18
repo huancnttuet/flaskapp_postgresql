@@ -7,3 +7,4 @@ from .subject_time import (
 )
 
 from .exam_time import exam_time_list_params
+from .schedule import schedule_list_params

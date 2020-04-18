@@ -33,4 +33,19 @@ class SubjectTimeModel(db.Model):
         self.note = subject[11]
 
     def __repr__(self):
-        return f"<SubjectTime {self.name}>"
+        return f"<SubjectTime {self.class_name}>"
+
+    def to_array(self):
+        st = SubjectTimeModel
+        return [
+            self.class_name,
+            self.credit,
+            self.class_code,
+            self.teacher,
+            self.student_total,
+            self.session,
+            self.day,
+            self.lession,
+            self.classroom,
+            self.note,
+        ]

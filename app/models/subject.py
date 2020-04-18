@@ -1,4 +1,5 @@
 from app.models import db
+import json
 
 
 class SubjectModel(db.Model):
@@ -32,3 +33,7 @@ class SubjectModel(db.Model):
 
     def __repr__(self):
         return f"<Subject {self.name}>"
+
+    def toJSON(self):
+        return json.dumps(self, default=lambda o: o.__dict__, sort_keys=True, indent=4)
+
