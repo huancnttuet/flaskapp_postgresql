@@ -11,5 +11,8 @@ def init_app(app, **kwargs):
     db.init_app(app)
     migrate.init_app(app)
 
+
 from .car import CarsModel
 from .score import ScoreModel
+from .subject import SubjectModel
+from .subject_time import SubjectTimeModel

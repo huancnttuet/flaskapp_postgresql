@@ -1,21 +1,21 @@
 from flask import Blueprint, url_for
 from flask_restplus import Api
 
-api_bp = Blueprint('api', __name__)
+api_bp = Blueprint("api", __name__)
 
 
 class CustomApi(Api):
     @property
     def specs_url(self):
         """Monkey patch for HTTPS"""
-        scheme = 'http' if '5000' in self.base_url else 'https'
-        return url_for(self.endpoint('specs'), _external=True, _scheme=scheme)
+        scheme = "http" if "5000" in self.base_url else "https"
+        return url_for(self.endpoint("specs"), _external=True, _scheme=scheme)
 
 
 api = CustomApi(
     app=api_bp,
-    version='BETA 1.0',
-    title='UET Support API',
+    version="BETA 1.0",
+    title="UET Support API",
     validate=False,
     # doc=swagger_doc  # disable Swagger UIs
 )
@@ -29,6 +29,13 @@ def init_app(app, **kwargs):
     """
     from .car import car_ns
     from .score import score_ns
+    from .subject import subject_ns
+    from .subject_time import subject_time_ns
+    from .exam_time import exam_time_ns
+
     app.register_blueprint(api_bp)
     # api.add_namespace(car_ns)
     api.add_namespace(score_ns)
+    api.add_namespace(subject_ns)
+    api.add_namespace(subject_time_ns)
+    api.add_namespace(exam_time_ns)
