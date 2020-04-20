@@ -2,7 +2,7 @@ from app.models import db
 
 
 class ScoreModel(db.Model):
-    __tablename__ = 'scores'
+    __tablename__ = "scores"
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String())
@@ -20,3 +20,8 @@ class ScoreModel(db.Model):
 
     def __repr__(self):
         return f"<Score {self.name}>"
+
+    def to_array(self):
+
+        return [self.name, self.code, self.path, self.time, self.note]
+

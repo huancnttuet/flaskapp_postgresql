@@ -28,7 +28,7 @@ class ScoreSimple(Resource):
         type_education = args.type_education
         print(args)
         results = uet_api.get_score(term, type_education)
-        return {"name": results[1], "count": len(results[0]), "list_score": results[0]}
+        return results
 
 
 @score_ns.route("/getListYearTerm")
@@ -83,13 +83,3 @@ class SearchSimple(Resource):
         text = args.input
         results = uet_api.get_hint_input(text)
         return {"count": len(results), "list_hint": results}
-
-    # @api.expect(score)
-    # def post(self):
-
-    #     data = api.payload
-    #     new_car = m.CarsModel(name=data['name'],
-    #                           model=data['model'], doors=data['doors'])
-    #     db.session.add(new_car)
-    #     db.session.commit()
-    #     return {"message": f"car {new_car.name} has been created successfully."}
