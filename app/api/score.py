@@ -28,6 +28,7 @@ class ScoreSimple(Resource):
         type_education = args.type_education
         print(args)
         results = uet_api.get_score(term, type_education)
+        results[1] = [[results[1]]]
         return results
 
 
