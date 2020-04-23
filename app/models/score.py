@@ -10,18 +10,21 @@ class ScoreModel(db.Model):
     path = db.Column(db.String())
     time = db.Column(db.String())
     note = db.Column(db.String())
+    term = db.Column(db.String())
+    type_education = db.Column(db.String())
 
-    def __init__(self, name, model, doors):
-        self.name = name
-        self.code = code
-        self.path = path
-        self.time = time
-        self.note = note
+    def __init__(self, score, term, type_education):
+        self.name = score[0]
+        self.code = score[1]
+        self.path = score[2]
+        self.time = score[3]
+        self.note = score[4]
+        self.term = term
+        self.type_education = type_education
 
     def __repr__(self):
         return f"<Score {self.name}>"
 
     def to_array(self):
 
-        return [self.name, self.code, self.path, self.time, self.note]
-
+        return [self.name, self.code, self.path, self.time, self.note, self.term, self.type_education]

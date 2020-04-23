@@ -32,6 +32,14 @@ input_search_list_params = RequestParser(bundle_errors=True)
 input_search_list_params.add_argument(
     'input', default='To', required=False, location='args', type=str)
 
+score_post_params = RequestParser(bundle_errors=True)
+score_post_params.add_argument(
+    'term', default=76, required=False, location='args', type=int)
+score_post_params.add_argument(
+    'type_education', default=0, required=False, location='args', type=int)
+score_post_params.add_argument(
+    'pwd', default=0, required=True, location='args', type=str)
+
 
 class ScoreGetSchema(mm.Schema):
     term = mm.fields.Integer(min=1, required=True)
