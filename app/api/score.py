@@ -82,6 +82,7 @@ class SearchSimple(Resource):
         term = args.term
         type_education = args.type_education
         results = uet_api.search(text, term, type_education)
+        results[1] = [[results[1]]]
         return results
 
 
