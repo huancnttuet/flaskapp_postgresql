@@ -82,7 +82,7 @@ class SearchSimple(Resource):
         term = args.term
         type_education = args.type_education
         results = uet_api.search(text, term, type_education)
-        return {"count": len(results), "list_score": results}
+        return results
 
 
 @score_ns.route("/quickSearch")
