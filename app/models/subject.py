@@ -34,6 +34,21 @@ class SubjectModel(db.Model):
     def __repr__(self):
         return f"<Subject {self.name}>"
 
-    def toJSON(self):
-        return json.dumps(self, default=lambda o: o.__dict__, sort_keys=True, indent=4)
+    def serialize(self):
+        return {
+            'id': self.id,
+            'stt' : self.stt,
+            'code' : self.code,
+            'name' : self.name,
+            'dob' : self.dob,
+            'school_year' : self.school_year,
+            'class_code' : self.class_code,
+            'class_type' : self.class_type,
+            'class_name' : self.class_name,
+            'credit' : self.credit,
+            'register_type' : self.register_type,
+            'term_id' : self.term_id
+        }
 
+    # def toJSON(self):
+    #     return json.dumps(self, default=lambda o: o.__dict__, sort_keys=True, indent=4)

@@ -35,6 +35,20 @@ class SubjectTimeModel(db.Model):
     def __repr__(self):
         return f"<SubjectTime {self.class_name}>"
 
+    def serialize(self):
+        return {
+            "class_name": self.class_name,
+            "credit": self.credit,
+            "class_code": self.class_code,
+            "teacher": self.teacher,
+            "student_total": self.student_total,
+            "day_time": self.session,
+            "day_week": self.day,
+            "lesson": self.lession,
+            "room": self.classroom,
+            "note": self.note,
+        }
+
     def to_array(self):
         st = SubjectTimeModel
         return [

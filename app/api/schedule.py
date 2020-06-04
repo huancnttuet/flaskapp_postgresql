@@ -1,4 +1,5 @@
 from flask_restplus import Resource, fields
+from flask import jsonify
 from app.extensions import Namespace
 from app.api import api
 from app.services import schedule
@@ -18,9 +19,27 @@ class ScheduleSimple(Resource):
         mssv = args.mssv
 
         results = schedule.get_schedule(mssv)
+
         subject_times = []
         for r in results:
             st = r[1].to_array()
+            subject_times.append(st)
+
+        return subject_times
+
+
+@schedule_ns.route("/test")
+class ScheduleTestSimple(Resource):
+    @schedule_ns.expect(requests.schedule_list_params, validate=True)
+    def get(self):
+        args = requests.schedule_list_params.parse_args()
+        mssv = args.mssv
+
+        results = schedule.get_schedule(mssv)
+        # print(results[0][0].toJSON())
+        subject_times = []
+        for r in results:
+            st = r[1].serialize()
             subject_times.append(st)
 
         return subject_times
