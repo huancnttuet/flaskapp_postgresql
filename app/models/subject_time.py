@@ -37,7 +37,7 @@ class SubjectTimeModel(db.Model):
 
     def serialize(self):
         return {
-            "class_name": self.class_name,
+            "subject_name": self.class_name,
             "credit": self.credit,
             "class_code": self.class_code,
             "teacher": self.teacher,
