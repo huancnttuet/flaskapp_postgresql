@@ -28,10 +28,9 @@ class ScoreSimple(Resource):
         args = requests.score_list_params.parse_args()
         term = args.term
         type_education = args.type_education
-        print(args)
+
         results = uet_api.get_score(term, type_education)
-        results[1] = [[results[1]]]
-        return results
+        return {"term_name": results[1], "subject_list": results[0]}
 
     @score_ns.expect(requests.score_post_params, validate=True)
     def post(self):
