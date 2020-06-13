@@ -23,7 +23,7 @@ class ExamTimeSimple(Resource):
                 'student_code': r[1],
                 'student_name': r[2],
                 'class_name': r[4],
-                'dob': r[3]
+                'dob': r[3],
                 'sbd': r[5],
                 'course_code': r[6],
                 'course_name': r[7],
