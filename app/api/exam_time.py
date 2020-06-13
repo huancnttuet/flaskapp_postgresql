@@ -22,15 +22,16 @@ class ExamTimeSimple(Resource):
                 'id': r[0],
                 'student_code': r[1],
                 'student_name': r[2],
-                'class_name': r[3],
-                'sbd': r[4],
-                'course_code': r[5],
-                'course_name': r[6],
-                'day': r[7],
-                'time': r[8],
-                'exam_case': r[9],
-                'room': r[10],
-                'place': r[11],
-                'note': r[12]}
+                'class_name': r[4],
+                'dob': r[3]
+                'sbd': r[5],
+                'course_code': r[6],
+                'course_name': r[7],
+                'day': r[8],
+                'time': r[9],
+                'exam_case': r[10],
+                'room': r[11],
+                'place': r[12],
+                'note': r[13]}
             )
         return re
