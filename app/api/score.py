@@ -86,7 +86,7 @@ class SearchSimple(Resource):
 
 
 @score_ns.route("/quickSearch")
-class SearchSimple(Resource):
+class Search1Simple(Resource):
     @score_ns.expect(requests.input_search_list_params, validate=True)
     def get(self):
         args = requests.input_search_list_params.parse_args()
@@ -96,7 +96,7 @@ class SearchSimple(Resource):
 
 
 @score_ns.route("/getHintInput")
-class SearchSimple(Resource):
+class Search2Simple(Resource):
     @score_ns.expect(requests.input_search_list_params, validate=True)
     def get(self):
         args = requests.input_search_list_params.parse_args()
@@ -106,7 +106,7 @@ class SearchSimple(Resource):
 
 
 @score_ns.route("/getAll")
-class ScoreSimple(Resource):
+class Score3Simple(Resource):
     @score_ns.expect(requests.score_list_params, validate=True)
     def get(self):
         args = requests.score_list_params.parse_args()
